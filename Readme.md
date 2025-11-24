@@ -72,4 +72,12 @@ Go to: http://127.0.0.1:5000
 
 * Click Search.
 
-* Click on the filename in the results list to open or download the file.****
+* Click on the filename in the results list to open or download the file.
+
+  ## Screenshots
+
+![Home Page](./screenshots/img.png)
+![Upload Page](./screenshots/img_1.png)
+![Search Page](./screenshots/img_2.png)
+![Terminal view](./screenshots/img_3.png)
+
