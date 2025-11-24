@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Search Papers</title>
+    <style>
+        /* (The CSS is exactly the same as before) */
+        body { font-family: sans-serif; margin: 2em; background: #f4f4f4; }
+        h2 { text-align: center; }
+        nav { text-align: center; margin-bottom: 2em; }
+        nav a { padding: 0.5em 1em; text-decoration: none; background: #555; color: white; border-radius: 4px; }
+        nav a:hover { background: #333; }
+        form, .results {
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 2em;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        .results { margin-top: 2em; }
+        div { margin-bottom: 1.5em; }
+        label { display: block; margin-bottom: 0.5em; font-weight: bold; }
+        input[type="text"], select {
+            width: 100%;
+            padding: 0.8em;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            width: 100%;
+            padding: 1em;
+            background: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover { background: #0056b3; }
+        .result-item { list-style: none; padding: 1em; border: 1px solid #ddd; border-radius: 4px; margin-bottom: 1em; }
+        .result-item a { font-size: 1.2em; text-decoration: none; color: #007bff; }
+        .result-item p { margin: 0.5em 0 0; color: #555; }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="/">Home</a>
+        <a href="/upload-page">Go to Upload Page</a>
+    </nav>
+
+    <h2>Search Question Papers</h2>
+
+    <form action="/search" method="GET">
+        <div>
+            <label for="subject">Subject:</label>
+            <input type="text" id="subject" name="subject" list="subject-list"
+                   placeholder="Type or select a subject">
+            <datalist id="subject-list">
+                <option value="Physics"></option>
+                <option value="Maths"></option>
+                <option value="English"></option>
+            </datalist>
+        </div>
+        <div>
+            <label for="exam_type">Exam Type:</label>
+            <select name="exam_type" id="exam_type">
+                <option value="">-- All Exam Types --</option>
+                <option value="midterm">Midterm</option>
+                <option value="endterm">Endterm</option>
+            </select>
+        </div>
+        <div>
+            <label for="year">Year:</label>
+            <select name="year" id="year">
+                <option value="">-- All Years --</option>
+                {% for year in years %}
+                    <option value="{{ year }}">{{ year }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <button type="submit">Search</button>
+    </form>
+
+    {% if papers %}
+    <div class="results">
+        <h3>Search Results</h3>
+        <ul>
+            {% for paper in papers %}
+                <li class="result-item">
+                    <a href="/download/{{ paper.stored_filename }}" target="_blank">
+                    {{ paper.original_filename }}
+                        </a>
+                    <p>
+                        {{ paper.subject }} | {{ paper.exam_type }} | {{ paper.year }}
+                    </p>
+                </li>
+            {% else %}
+                <p>No papers found matching your search.</p>
+            {% endfor %}
+        </ul>
+    </div>
+    {% endif %}
+
+</body>
+</html>

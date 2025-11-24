@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Question Paper Archive</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            background: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            text-align: center;
+        }
+        h1 {
+            color: #333;
+            margin-bottom: 2em;
+        }
+        .button-nav {
+            display: flex;
+            gap: 2em;
+        }
+        .button-nav a {
+            display: block;
+            padding: 2.5em 3.5em;
+            background: #fff;
+            color: #007bff;
+            text-decoration: none;
+            font-size: 1.5em;
+            font-weight: bold;
+            border: 2px solid #007bff;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+        .button-nav a:hover {
+            background: #007bff;
+            color: #fff;
+            transform: translateY(-5px);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome to the Question Paper Archive</h1>
+        <div class="button-nav">
+            <a href="/upload-page">Upload a Paper</a>
+            <a href="/search">Search for a Paper</a>
+        </div>
+    </div>
+</body>
+</html>

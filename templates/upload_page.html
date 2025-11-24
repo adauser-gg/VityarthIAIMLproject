@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Upload Question Paper</title>
+    <style>
+        /* (The CSS is exactly the same as before) */
+        body { font-family: sans-serif; margin: 2em; background: #f4f4f4; }
+        h2 { text-align: center; }
+        /* --- This is the new nav style --- */
+        nav { text-align: center; margin-bottom: 2em; }
+        nav a { padding: 0.5em 1em; text-decoration: none; background: #555; color: white; border-radius: 4px; }
+        nav a:hover { background: #333; }
+        form {
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 2em;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        div { margin-bottom: 1.5em; }
+        label { display: block; margin-bottom: 0.5em; font-weight: bold; }
+        input[type="number"],
+        input[type="text"], /* Added for the datalist */
+        input[type="file"],
+        select {
+            width: 100%;
+            padding: 0.8em;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            width: 100%;
+            padding: 1em;
+            background: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover { background: #0056b3; }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="/">Home</a>
+        <a href="/search">Go to Search Page</a>
+    </nav>
+
+    <h2>Upload New Question Paper</h2>
+
+    <form action="/upload" method="POST" enctype="multipart/form-data">
+
+        <div>
+            <label for="subject">Subject:</label>
+            <input type="text" id="subject-input" name="subject" list="subject-list"
+                   placeholder="Type or select a subject" required>
+            <datalist id="subject-list">
+                <option value="Physics"></option>
+                <option value="Maths"></option>
+                <option value="English"></option>
+            </datalist>
+        </div>
+
+        <div>
+            <label for="exam_type">Exam Type:</label>
+            <select name="exam_type" id="exam_type" required>
+                <option value="">-- Select Exam Type --</option>
+                <option value="midterm">Midterm</option>
+                <option value="endterm">Endterm</option>
+            </select>
+        </div>
+
+        <div>
+            <label for="year">Year:</label>
+            <select name="year" id="year" required>
+                <option value="">-- Select Year --</option>
+                {% for year in years %}
+                    <option value="{{ year }}">{{ year }}</option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <div>
+            <label for="file">Question Paper File (PDF, IMG):</label>
+            <input type="file" name="file" id="file" required>
+        </div>
+
+        <button type="submit">Upload Paper</button>
+
+    </form>
+
+</body>
+</html>
