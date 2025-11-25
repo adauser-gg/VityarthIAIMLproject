@@ -3,12 +3,16 @@ import uuid
 import sqlite3
 from datetime import datetime
 from flask import Flask, render_template, request, send_from_directory
+import numpy as np
+import array 
+
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 TEMPLATE_DIR = os.path.join(BASE_DIR, "templates")
 UPLOAD_FOLDER = os.path.join(BASE_DIR, "uploads")
 DATABASE_FILE = os.path.join(BASE_DIR, "papers.db")
-
+my_array = array.array('i', [1, 2, 3, 4, 5])
+filesystem = np.array([1,2,3,4,5])
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 
 app = Flask(__name__, template_folder=TEMPLATE_DIR)
@@ -114,4 +118,6 @@ def download_file(filename):
     return send_from_directory(UPLOAD_FOLDER, filename)
 
 if __name__ == "__main__":
+
     app.run(debug=True, port=5000)
+
