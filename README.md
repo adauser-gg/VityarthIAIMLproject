@@ -1,6 +1,7 @@
 # Question Paper Archive
 
 This is a local web application built using Python and Flask. It facilitates the uploading of question papers (PDFs or images) and tagging them with essential metadata such as subject, year, and exam type. All data and files are stored locally on your machine using SQLite.
+It uses numpy and arrays learned in the course to manage files and explores different sorting algorithm like breadth first search & depth first search, etc.
 
 ## Overview
 
@@ -29,6 +30,10 @@ Python 3
 * SQLite (Database)
 
 * HTML/CSS
+
+* numpy
+
+* array
 
 ## Steps to Install & Run the Project
 
